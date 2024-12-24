@@ -1,16 +1,344 @@
-/* Здесь вы напишете основную часть стилей страницы.
-
-Будьте внимательны! Для корректной работы скриптов на этом сайте нужно, чтобы в HTML некоторые классы были названы особым образом:
-✦ like-icon — для svg-иконки анимированного сердца
-✦ card__like-button — для кнопки Like рядом с иконкой
-✦ card__icon-button — для кнопки, оборачивающей иконку
-✦ card__icon-button — для кнопки, оборачивающей иконку
-✦ is-liked — для обозначения состояния лайкнутой иконки в виде сердца
-✦ button__text — для обозначения текстового элемента внутри кнопки
-
-*/
-
 .page {
   min-inline-size: 320px;
   min-block-size: 100dvb;
+  background-image: var(--background);
+  background-position: center;
+  background-attachment: fixed;
+  font-family: var(--base-font);
+  font-variation-settings: 'wght' var(--font-weight-400);
+  font-size: 18px;
 }
+
+.header {
+  padding: 100px 0px;
+  display: flex;
+  justify-content: center;
+  font-family: var(--accent-font);
+  font-weight: var(--font-weight-400);
+}
+
+.header__content-container {
+  width: 100%;
+  max-width: 700px;
+  background-color: white;
+  border: 2px solid black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: clamp(7.5rem, 7.3239rem + 0.7512vw, 8rem);
+  padding-bottom: clamp(7.5rem, 7.3239rem + 0.7512vw, 8rem);
+  gap: 20px;
+}
+
+.header__logo-text {
+  font-size: clamp(3.0625rem, 2.7104rem + 1.5023vw, 4.0625rem);
+  text-transform: uppercase;
+}
+
+.header__title {
+  font-size: clamp(0.875rem, 0.6769rem + 0.8451vw, 1.4375rem);
+  text-transform: uppercase;
+}
+
+/* --- основной контент сайта ---*/
+
+.main {
+  display: flex;
+  justify-content: center;
+}
+
+.main__cards-list {
+  display: flex;
+  flex-direction: column;
+  gap: 49px;
+}
+
+.card {
+  inline-size: 100%;
+  max-inline-size: 700px;
+  background-color: white;
+  border: 2px solid black; 
+}
+
+.card__title-container {
+  padding: 5px 10px 4px;
+  border-bottom: 2px solid black;  
+}
+
+.card_title {
+  font-family: var(--base-font);
+  font-variation-settings: 'wght' var(--font-weight-700);
+  font-size: 18px;
+  line-height: 21.78px;
+}
+
+.card_image {
+  inline-size: 100%;
+  aspect-ratio: 1 / 1;
+  object-position: center;
+  object-fit: cover;
+  display: block;
+}
+
+.card__description-container {
+  border-top: 2px solid black;
+  padding: 25px 25px 0px 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 27px;
+  font-family: var(--base-font);
+  font-variation-settings: 'wght' var(--font-weight-400), 'wdth' 200;
+  font-size: 18px;
+  line-height: 21px;
+}
+
+/* --- лейбл в карточке --- */
+
+.cart__image-label {
+  font-family: var(--accent-font);
+  font-weight: var(--font-weight-400);
+  font-size: 14px;
+  position: absolute;
+  inset-block-start: clamp(1.4375rem, 1.3645rem + 0.3115vw, 1.5rem);
+  inset-inline-end: clamp(0.8125rem, 0.0093rem + 3.4268vw, 1.5rem);
+  text-transform: uppercase;
+  text-shadow:
+  -1px 0 #FFFFFF, 
+  0 1px #FFFFFF, 
+  1px 0 #FFFFFF,
+  0 -1px #FFFFFF;
+  opacity: 0.5;
+  mix-blend-mode: hard-light;
+  z-index: 1;
+}
+
+.card__image-container {
+  position: relative;
+}
+
+@supports((text-stroke: 1px #FFFFFF) or (-webkit-text-stroke: 1px #FFFFFF)) {
+  .cart__image-label {
+    -webkit-text-stroke: 1px #FFFFFF;
+    text-stroke: 1px #FFFFFF;
+    text-shadow: none;
+  }
+}
+
+/* --- набор фильтров --- */
+
+.saturate_filter {
+  filter: saturate(300%); 
+}
+
+.blur_filter {
+  filter: blur(5px);
+}
+
+.sepia_filter {
+  filter: sepia(50%);
+}
+
+.invert_filter {
+  filter: invert(0.7);
+}
+
+.grayscale_filter {
+  filter: grayscale(0.9); 
+}
+
+.opacity_filter {
+  filter: opacity(0.5);
+}
+
+.mix_filter {
+  filter: saturate(800%) opacity(0.5) sepia(60%) invert(0.7);
+}
+
+.contrast_filter {
+  filter: contrast(200%);
+}
+
+/* --- кнопка like --- */
+
+.card__buttons-container {
+  padding: 25px 25px 24px 0px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 4px;
+}
+
+.card__like-button {
+  padding: 11px 35.5px;
+}
+
+.button {
+  font-family: var(--accent-font);
+  font-weight: var(--font-weight-400);
+  font-size: 14px;
+  background-color: white;
+  border: 2px solid black;
+  outline: none;
+  transition: box-shadow 0.3s ease; 
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+/* --- псевдоэлемент для кнопки like --- */
+
+.button::before {
+  content: "";
+  inline-size: 100%;
+  block-size: 100%;
+  background-color: black;
+  position: absolute;
+  inset-block-start: 0;
+  inset-inline-start: -100%;
+  transition: left 0.5s ease-in-out;
+} 
+
+.button:hover::before {
+  inset-inline-start: 0;
+}
+
+.card__like-button:focus-visible {
+  box-shadow: 2px 2px 0px 0px black;
+}
+
+.button__text {
+  position: relative;
+  mix-blend-mode: difference;
+  color: white;
+}
+
+/* --- кнопка, окутывающая иконку сердечка --- */
+
+.card__icon-button {
+  display: grid;
+  border: 2px solid transparent;
+  background: transparent;
+  transition: border-color 0.3s ease; 
+  cursor: pointer;
+  appearance: none;
+}
+
+.card__icon-button:focus-visible {
+  outline: none;
+  border: 2px solid black;
+}
+
+/* --- стилизация иконки сердечка ---*/
+
+.core {
+  transition: fill 0.3s;
+}
+
+.main-body {
+  transition: fill 0.3s 0.05s;
+}
+
+.like-icon:hover .main-body {
+  fill: #000;
+}
+
+.like-icon:hover .core {
+  fill: #000;
+}
+
+.like-icon:not(:hover) .core {
+  transition: fill 0.3s 0.03s;
+}
+
+.like-icon:not(:hover) .main-body {
+  transition: fill 0.3s;
+}
+
+.like-icon:active .core {
+  fill: #ff0000;
+}
+
+.like-icon:active .main-body {
+  fill: #ff0000;
+}
+
+/* --- футер --- */
+
+.footer {
+  padding: 50px 34px 102px;
+  display: flex;
+  justify-content: center;
+}
+
+.footer__button {
+  padding: 15px 18px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  max-inline-size: 700px;
+}
+
+.footer__button-text {
+  position: relative;
+  mix-blend-mode: difference;
+  color: white;
+}
+
+.disketa__container {
+  inline-size: 21px;  
+  block-size: 21px;
+}
+
+@media (width <= 375px) {
+  .disketa__container {
+    inline-size: 28px;  
+    block-size: 28px;   
+  }
+}  
+
+.disketa__icon {
+  mix-blend-mode: difference;
+  inline-size: 100%;
+  block-size: 100%;
+}
+
+/* --- всплывающее окно --- */
+
+dialog::backdrop {
+  background-color: rgb(0 0 0 / 0.7);
+}
+
+dialog[open] {
+  padding: 30px;
+  text-transform: uppercase;
+}
+
+.disketa__icon-container {
+  inline-size: 39px;  
+  block-size: 39px; 
+}
+
+.dialog__content-text {
+  font-family: var(--accent-font);
+  font-weight: var(--font-weight-400);
+  font-size: 14px;
+  line-height: 21px;
+  inline-size: 234px;
+}
+
+.dialog__content-container {
+  display: grid;
+  grid-template-columns: repeat(2, min-content);
+  gap: 20px;
+  align-items: center;
+}
+
+.dialog_button {
+  margin-block-start: 30px;
+  inline-size: 100%;
+  text-transform: uppercase;
+  padding: 9px 0px;
+}
+
+

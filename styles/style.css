@@ -4,30 +4,28 @@
   background-image: var(--background);
   background-position: center;
   background-attachment: fixed;
-  font-family: var(--base-font);
-  font-variation-settings: 'wght' var(--font-weight-400);
+  font-family: var(--base-font, 'Inter-Variable', sans-serif);
+  font-variation-settings: 'wght' var(--font-weight-bold);
   font-size: 18px;
 }
 
 .header {
-  padding: 100px 0px;
+  margin: auto;
+  margin-top: 100px;
+  margin-bottom: 100px;
   display: flex;
-  justify-content: center;
-  font-family: var(--accent-font);
-  font-weight: var(--font-weight-400);
-}
-
-.header__content-container {
+  flex-direction: column;
+  align-items: center;
+  font-weight: var(--font-weight-medium);
   width: 100%;
   max-width: 700px;
   background-color: white;
   border: 2px solid black;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  gap: 20px;
+  font-family: var(--accent-font);
+  font-weight: var(--font-weight-medium);
   padding-top: clamp(7.5rem, 7.3239rem + 0.7512vw, 8rem);
   padding-bottom: clamp(7.5rem, 7.3239rem + 0.7512vw, 8rem);
-  gap: 20px;
 }
 
 .header__logo-text {
@@ -44,12 +42,9 @@
 
 .main {
   display: flex;
-  justify-content: center;
-}
-
-.main__cards-list {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 49px;
 }
 
@@ -60,16 +55,13 @@
   border: 2px solid black;
 }
 
-.card__title-container {
-  padding: 5px 10px 4px;
-  border-bottom: 2px solid black;
-}
-
 .card_title {
-  font-family: var(--base-font);
-  font-variation-settings: 'wght' var(--font-weight-700);
+  font-family: var(--base-font, 'Inter-Variable', sans-serif);
+  font-variation-settings: 'wght' var(--font-weight-bold);
   font-size: 18px;
   line-height: 21.78px;
+  padding: 5px 10px 4px;
+  border-bottom: 2px solid black;
 }
 
 .card_image {
@@ -86,8 +78,8 @@
   display: flex;
   flex-direction: column;
   gap: 27px;
-  font-family: var(--base-font);
-  font-variation-settings: 'wght' var(--font-weight-400), 'wdth' 200;
+  font-family: var(--base-font, 'Inter-Variable', sans-serif);
+  font-variation-settings: 'wght' var(--font-weight-medium), 'wdth' 200;
   font-size: 18px;
   line-height: 21px;
 }
@@ -95,8 +87,8 @@
 /* --- лейбл в карточке --- */
 
 .cart__image-label {
-  font-family: var(--accent-font);
-  font-weight: var(--font-weight-400);
+  font-family: var(--accent-font, 'Press Start 2P', fantasy);
+  font-weight: var(--font-weight-medium);
   font-size: 14px;
   position: absolute;
   inset-block-start: clamp(1.4375rem, 1.3645rem + 0.3115vw, 1.5rem);
@@ -172,8 +164,8 @@
 }
 
 .button {
-  font-family: var(--accent-font);
-  font-weight: var(--font-weight-400);
+  font-family: var(--accent-font, 'Press Start 2P', fantasy);
+  font-weight: var(--font-weight-medium);
   font-size: 14px;
   background-color: white;
   border: 2px solid black;
@@ -238,11 +230,11 @@
 }
 
 .like-icon:hover .main-body {
-  fill: #000;
+  fill: var(--base-like-color);
 }
 
 .like-icon:hover .core {
-  fill: #000;
+  fill: var(--base-like-color);
 }
 
 .like-icon:not(:hover) .core {
@@ -254,23 +246,17 @@
 }
 
 .like-icon:active .core {
-  fill: #ff0000;
+  fill: var(--animation-like-color);
 }
 
 .like-icon:active .main-body {
-  fill: #ff0000;
+  fill: var(--animation-like-color);
 }
 
 /* --- футер --- */
 
-.footer {
-  padding: 50px 34px 102px;
-  display: flex;
-  justify-content: center;
-}
-
 .footer__button {
-  padding: 15px 18px;
+  padding: 16px 20px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -278,6 +264,17 @@
   gap: 8px;
   max-inline-size: 700px;
   background-color: white;
+  margin-bottom: 102px;
+}
+
+@media (width <= 375px) {
+  .footer__button {
+    max-inline-size: 311px;
+  }
+}
+
+.footer__button:focus-visible {
+  box-shadow: 2px 2px 0px 0px black;
 }
 
 .footer__button-text {
@@ -316,12 +313,18 @@ dialog[open] {
   text-transform: uppercase;
 }
 
+@media (width <= 375px) {
+  dialog[open] {
+    padding: 30px 42px;
+  }
+}
+
 .dialog__content-text {
-  font-family: var(--accent-font);
-  font-weight: var(--font-weight-400);
+  font-family: var(--accent-font, 'Press Start 2P', fantasy);
+  font-weight: var(--font-weight-medium);
   font-size: 14px;
   line-height: 21px;
-  inline-size: 234px;
+  inline-size: 229px;
 }
 
 .dialog__content-container {
@@ -338,4 +341,6 @@ dialog[open] {
   padding: 9px 0px;
 }
 
-
+.dialog_button:focus-visible {
+  box-shadow: 2px 2px 0px 0px black;
+}

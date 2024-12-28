@@ -1,9 +1,9 @@
 :root {
-    --base-font: 'Inter-Variable';
-    --accent-font: 'Press Start 2 P';
+    --base-font: 'Inter-Variable', sans-serif;
+    --accent-font: 'Press Start 2P', fantasy;
 
-    --font-weight-400: 400;
-    --font-weight-700: 700;
+    --font-weight-medium: 400;
+    --font-weight-bold: 700;
 
     --background: 
       repeating-linear-gradient(
@@ -22,6 +22,6 @@
         #1a1a1a
       );
 
-    --color-red: #FF0000;
-    --color-white: #FFFFFF;
+    --animation-like-color: #FF0000;
+    --base-like-color: #000;
 }
